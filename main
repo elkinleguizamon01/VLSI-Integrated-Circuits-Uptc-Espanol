@@ -1,0 +1,51 @@
+# Página Inicial / Getting Started
+
+Bem-vindo ao repositório. Esta é a página inicial com instruções rápidas para início e fluxo básico de Git.
+
+## Sobre
+Breve descrição do projeto (substitua pelo seu texto).
+
+## Primeiros passos (Quick Start)
+1. Clonar
+    ```
+    git clone https://seu-repositorio.git
+    cd seu-repositorio
+    ```
+2. Criar branch
+    ```
+    git checkout -b feature/minha-nova-funcionalidade
+    ```
+3. Fazer alterações, adicionar e commitar
+    ```
+    git add .
+    git commit -m "Descrição clara da mudança"
+    ```
+4. Enviar branch para remoto
+    ```
+    git push -u origin feature/minha-nova-funcionalidade
+    ```
+5. Abrir Pull Request no GitHub/GitLab/Bitbucket e seguir o processo de revisão.
+
+## Fluxo recomendado
+- Trabalhe em branches curtas e específicas por feature/bugfix.
+- Rebase interativo ou merge conforme política do projeto.
+- Mensagens de commit claras e atômicas.
+
+## Comandos úteis
+- Ver status: `git status`
+- Ver histórico: `git log --oneline --graph --decorate`
+- Stash temporário: `git stash` / `git stash pop`
+- Atualizar branch com upstream:
+  ```
+  git fetch origin
+  git rebase origin/main
+  ```
+
+## Contribuindo
+Abra uma issue antes de mudanças maiores. Siga o padrão de código e testes do projeto.
+
+## Licença
+Adicione uma licença (por exemplo MIT) ou substitua conforme necessário.
+
+---
+Coloque aqui links relevantes (issues, wiki, templates, CI).
