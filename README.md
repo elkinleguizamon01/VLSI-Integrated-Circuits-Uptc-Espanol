@@ -1,4 +1,4 @@
-# Integrated Circuit Design and Development
+# VLSI integrated Circuits (Uptc)
 
 This repository provides examples and various resources for the design and development of integrated circuits. 
 
