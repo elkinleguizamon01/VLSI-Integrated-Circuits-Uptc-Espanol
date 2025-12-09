@@ -28,6 +28,28 @@ La herramienta de sintesis convierte estas descripciones en puertas logicas fisi
 
 #### 1. Conceptos fundamentasles de la logica combinacional 
 
+La logica combinacional esta formada por lo siguiente:
 
+* AND
+* OR 
+* NOT 
+* NAND 
+* NOR 
+* XOR
+* XNOR
+
+Estas se combinan para formar circuitos mas complejos 
+
+Para cualquier combinacion de entradas, existe una unica salida definida.
+
+esta se usa en: 
+
+* Sumadores y ALUs
+* Decodificadores
+* Codificadores
+* Comparadores
+* Multiplexores
+
+#### 2. Logica combinacional en Verilog ``` assign ```
 
 
