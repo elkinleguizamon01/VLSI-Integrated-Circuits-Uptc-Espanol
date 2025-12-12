@@ -52,4 +52,20 @@ esta se usa en:
 
 #### 2. Logica combinacional en Verilog ``` assign ```
 
+Considerando la siguiente descripcion en Verilog de una compuerta logica OR, realiza los siguientes ejercicios.
+
+* Genera una compuerta AND de  2 entradas y 1 salida 
+
+* 
+
+``` Verilog
+//OR gate in Verilog 
+
+module ej1( input logic a, b,
+output logic o); 
+assign o = a || b;
+
+endmodule
+
+```
 
