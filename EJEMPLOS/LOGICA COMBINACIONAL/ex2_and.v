@@ -1,6 +1,6 @@
 //AND gate in verilog
 
-module ex1 ( input logic a, b, 
+module ex2_and ( input logic a, b, 
             output logic y );
     assign y = a & b;
 endmodule 
