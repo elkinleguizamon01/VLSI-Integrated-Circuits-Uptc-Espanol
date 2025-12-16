@@ -1,71 +1,94 @@
-# VLSI integrated Circuits (Uptc en español)
+# 🧠 VLSI Integrated Circuits  
+### *(UPTC – Introducción al Diseño Digital)*
 
-En este reposito se encontrara la introduccion a los fundamenteos del diseño digital Utilizando  Verilog y VHDL. Se presentaran conceptos esenciales como lógica combinacional, registros, maquinas de estados, FlipFlop, simulación y demás.
+Este repositorio contiene una **introducción a los fundamentos del diseño digital**, enfocada en el uso de **Verilog y VHDL** como lenguajes de descripción de hardware (HDL).
 
-## Introduccion al Diseño Digital en Verilog
+A lo largo del repositorio se desarrollan conceptos esenciales del diseño digital, tales como:
 
-¿Que es verilog?
+- Lógica combinacional  
+- Registros  
+- Flip-Flops  
+- Máquinas de estados (FSM)  
+- Simulación y síntesis de circuitos digitales  
 
-Verilog es un lenguaje diseñado especificamente para describir:
+Todo el contenido está orientado a comprender cómo se modelan y diseñan **circuitos digitales reales** a nivel de hardware.
 
-* circuitos digitales
-* El funcionamiento de ellos 
-* las conexiones internas
-* el comportamiento 
+---
 
-A diferencia de un lenguaje de programacion tradicional como C o Python, Verilog no describe instrucciones que se ejecutan en un procesador, sino que son Circuitos electronicos reales: puertas logicas, flip-flop, registros, multiplexores, maquinas de estado, etc.
+## 📘 Introducción al Diseño Digital en Verilog
 
-### Logica Combinacional 
+### ¿Qué es Verilog?
 
-La logica combinacional es uno de los pilares del diseño digital. Consiste en circuitos donde las salidas dependen unicamente del valor instantaneo de las entradas, sin emplear memoria, registros ni historicos de valores.
+**Verilog** es un lenguaje de descripción de hardware (HDL) diseñado específicamente para describir:
 
-En Verilo, se describe mediante:
+- Circuitos digitales  
+- Su funcionamiento interno  
+- Las interconexiones entre componentes  
+- El comportamiento lógico del sistema  
 
-* Asignaciones continuas: ``` assign ```
-* Expresines matematicas o Booleanas 
+A diferencia de lenguajes de programación tradicionales como **C** o **Python**, Verilog **no describe instrucciones secuenciales ejecutadas por un procesador**, sino que modela **hardware real**, como:
 
-La herramienta de sintesis convierte estas descripciones en puertas logicas fisicas dentro del hardware.
+- Puertas lógicas  
+- Flip-Flops  
+- Registros  
+- Multiplexores  
+- Máquinas de estado  
 
-#### 1. Conceptos fundamentasles de la logica combinacional 
+El código escrito en Verilog puede ser **sintetizado**, es decir, convertido en circuitos físicos dentro de un FPGA o ASIC.
 
-La logica combinacional esta formada por lo siguiente:
+---
 
-* AND
-* OR 
-* NOT 
-* NAND 
-* NOR 
-* XOR
-* XNOR
+## 🔌 Lógica Combinacional
 
-Estas se combinan para formar circuitos mas complejos 
+La **lógica combinacional** es uno de los pilares fundamentales del diseño digital. Se caracteriza porque:
 
-Para cualquier combinacion de entradas, existe una unica salida definida.
+- Las salidas dependen **únicamente del valor actual de las entradas**
+- No utiliza memoria, registros ni estados previos
+- No existe dependencia del tiempo (sin retroalimentación)
 
-esta se usa en: 
+En Verilog, la lógica combinacional se describe principalmente mediante:
 
-* Sumadores y ALUs
-* Decodificadores
-* Codificadores
-* Comparadores
-* Multiplexores
+- **Asignaciones continuas** (`assign`)
+- **Expresiones matemáticas o booleanas**
 
-#### 2. Logica combinacional en Verilog ``` assign ```
+Las herramientas de síntesis convierten estas descripciones en **puertas lógicas físicas** dentro del hardware.
 
-Considerando la siguiente descripcion en Verilog de una compuerta logica OR, realiza los siguientes ejercicios.
+---
 
-* Genera una compuerta AND de  2 entradas y 1 salida 
+### 🧩 1. Conceptos fundamentales de la lógica combinacional
 
-* 
+La lógica combinacional está compuesta por las siguientes puertas lógicas básicas:
 
-``` Verilog
-//OR gate in Verilog 
+- AND  
+- OR  
+- NOT  
+- NAND  
+- NOR  
+- XOR  
+- XNOR  
 
-module ej1( input logic a, b,
-output logic o); 
-assign o = a || b;
+Estas puertas pueden combinarse para formar circuitos más complejos.  
+Para **cada combinación de entradas**, existe **una única salida definida**.
 
+La lógica combinacional se utiliza ampliamente en:
+
+- Sumadores y ALUs  
+- Decodificadores  
+- Codificadores  
+- Comparadores  
+- Multiplexores  
+
+---
+
+### 🧪 2. Lógica combinacional en Verilog (`assign`)
+
+A continuación se muestra la descripción en Verilog de una **compuerta OR** utilizando una asignación continua:
+
+```verilog
+// OR gate in Verilog
+module ej1 (
+    input  logic a, b,
+    output logic o
+);
+    assign o = a || b;
 endmodule
-
-```
-
