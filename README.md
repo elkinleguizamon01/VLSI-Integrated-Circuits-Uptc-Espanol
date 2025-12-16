@@ -5,11 +5,10 @@ Este repositorio contiene una **introducción a los fundamentos del diseño digi
 
 A lo largo del repositorio se desarrollan conceptos esenciales del diseño digital, tales como:
 
-- Lógica combinacional  
-- Registros  
-- Flip-Flops  
-- Máquinas de estados (FSM)  
-- Simulación y síntesis de circuitos digitales  
+- Definir modulos con entradas y salidas logicas de uno o varios bits 
+- Escribir expresiones usando variables logicas y operaciones 
+- Usar sentencias assign y bloques always_comb para generar logica combinacional.
+- Utilizar always_ff para modelar flip-flops tipo D  
 
 Todo el contenido está orientado a comprender cómo se modelan y diseñan **circuitos digitales reales** a nivel de hardware.
 
@@ -94,3 +93,18 @@ module ej1 (
 endmodule
 
 
+El software de sintesis logica traduce esta descripcion en un circuito fiscio equivalente.
+
+Verilog incluye la mayoria de los operadores del lenguaje c:
+
+* Aritméticos: + - * / %
+
+* A nivel de bits: & | ^ ~ << >>
+
+* Comparación: > >= !=
+
+* Lógicos: && || !
+
+* Indexación de arreglos: []
+
+* Operador condicional: ?: 
