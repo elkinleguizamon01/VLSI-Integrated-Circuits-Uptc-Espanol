@@ -92,6 +92,7 @@ module ej1 (
     assign o = a || b;
 endmodule
 
+```
 
 El software de sintesis logica traduce esta descripcion en un circuito fiscio equivalente.
 
@@ -108,3 +109,42 @@ Verilog incluye la mayoria de los operadores del lenguaje c:
 * Indexación de arreglos: []
 
 * Operador condicional: ?: 
+
+
+## REGISTROS 
+
+Ejemplo de un flip-flop tipo D
+
+
+```
+module ex2 (
+input logic d, clk,
+output logic q
+);
+always_ff @(posedge clk) begin
+q <= d;
+end
+endmodule
+```
+
+Este código sintetiza un flip-flop D que copia la entrada d a la salida q en el flanco positivo del reloj.
+
+## MULTIPLEXORES Y BUSES
+
+La sentencia if modela un multiplexor 
+
+```
+module ex3 (
+input logic sel,
+input logic [3:0] a, b,
+output logic [3:0] y
+);
+always_comb begin
+if (sel) y <= a;
+else y <= b;
+end
+endmodule
+```
+Los arreglos representan buses. Normalmente se definen con el bit más significativo a la izquierda.
+
+
