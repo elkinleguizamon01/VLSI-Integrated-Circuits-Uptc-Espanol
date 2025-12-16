@@ -187,22 +187,20 @@ logic [15:0] address;  // Bus de dirección de 16 bits
 
 ## 🛠️ Herramientas Recomendadas
 
-- **Simuladores:** ModelSim, Vivado Simulator, Icarus Verilog
-- **Sintetizadores:** Vivado (Xilinx), Quartus (Intel/Altera), Yosys
-- **Editores:** VS Code con extensiones HDL, Sublime Text
+- **Simuladores:** ModelSim,  Icarus Verilog
+- **Sintetizadores:** Quartus (Intel/Altera), Yosys
+- **Editores:** VS Code con extensiones HDL
 
 ---
 
 ## 📖 Recursos Adicionales
 
-- [IEEE Verilog Standard](https://ieeexplore.ieee.org/document/8299595)
-- [OpenCourseWare - VLSI Design](https://ocw.mit.edu/)
-- Documentación oficial de herramientas EDA
+
 
 ---
 
 ## 📝 Licencia
 
-Este proyecto es de código abierto bajo licencia MIT.
+Este proyecto es de código abierto.
 
 
