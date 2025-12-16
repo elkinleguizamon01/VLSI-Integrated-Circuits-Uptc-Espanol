@@ -3,12 +3,16 @@
 
 Este repositorio contiene una **introducción a los fundamentos del diseño digital**, enfocada en el uso de **Verilog y VHDL** como lenguajes de descripción de hardware (HDL).
 
-A lo largo del repositorio se desarrollan conceptos esenciales del diseño digital, tales como:
+## 📚 Contenido Principal
 
-- Definir modulos con entradas y salidas logicas de uno o varios bits 
-- Escribir expresiones usando variables logicas y operaciones 
-- Usar sentencias assign y bloques always_comb para generar logica combinacional.
-- Utilizar always_ff para modelar flip-flops tipo D  
+A lo largo del repositorio se desarrollan conceptos esenciales del diseño digital:
+
+- ✅ Definir módulos con entradas y salidas lógicas de uno o varios bits
+- ✅ Escribir expresiones usando variables lógicas y operaciones booleanas
+- ✅ Usar sentencias `assign` y bloques `always_comb` para generar lógica combinacional
+- ✅ Utilizar `always_ff` para modelar flip-flops tipo D
+- ✅ Diseñar multiplexores y buses de datos
+- ✅ Crear máquinas de estado y circuitos secuenciales
 
 Todo el contenido está orientado a comprender cómo se modelan y diseñan **circuitos digitales reales** a nivel de hardware.
 
@@ -20,18 +24,18 @@ Todo el contenido está orientado a comprender cómo se modelan y diseñan **cir
 
 **Verilog** es un lenguaje de descripción de hardware (HDL) diseñado específicamente para describir:
 
-- Circuitos digitales  
-- Su funcionamiento interno  
-- Las interconexiones entre componentes  
-- El comportamiento lógico del sistema  
+- Circuitos digitales y su funcionamiento interno
+- Las interconexiones entre componentes
+- El comportamiento lógico del sistema
+- Sistemas digitales complejos a diferentes niveles de abstracción
 
 A diferencia de lenguajes de programación tradicionales como **C** o **Python**, Verilog **no describe instrucciones secuenciales ejecutadas por un procesador**, sino que modela **hardware real**, como:
 
-- Puertas lógicas  
-- Flip-Flops  
-- Registros  
-- Multiplexores  
-- Máquinas de estado  
+- Puertas lógicas
+- Flip-Flops y registros
+- Multiplexores y decodificadores
+- Máquinas de estado
+- Unidades aritméticas y lógicas (ALUs)
 
 El código escrito en Verilog puede ser **sintetizado**, es decir, convertido en circuitos físicos dentro de un FPGA o ASIC.
 
@@ -48,6 +52,7 @@ La **lógica combinacional** es uno de los pilares fundamentales del diseño dig
 En Verilog, la lógica combinacional se describe principalmente mediante:
 
 - **Asignaciones continuas** (`assign`)
+- **Bloques `always_comb`**
 - **Expresiones matemáticas o booleanas**
 
 Las herramientas de síntesis convierten estas descripciones en **puertas lógicas físicas** dentro del hardware.
@@ -58,24 +63,25 @@ Las herramientas de síntesis convierten estas descripciones en **puertas lógic
 
 La lógica combinacional está compuesta por las siguientes puertas lógicas básicas:
 
-- AND  
-- OR  
-- NOT  
-- NAND  
-- NOR  
-- XOR  
-- XNOR  
+| Puerta | Símbolo | Descripción |
+|--------|---------|-------------|
+| AND | `&` | Salida 1 si todas las entradas son 1 |
+| OR | `\|` | Salida 1 si al menos una entrada es 1 |
+| NOT | `~` | Invierte la entrada |
+| NAND | `~&` | Inversa de AND |
+| NOR | `~\|` | Inversa de OR |
+| XOR | `^` | Salida 1 si las entradas son diferentes |
+| XNOR | `~^` | Inversa de XOR |
 
-Estas puertas pueden combinarse para formar circuitos más complejos.  
-Para **cada combinación de entradas**, existe **una única salida definida**.
+Estas puertas pueden combinarse para formar circuitos más complejos. Para **cada combinación de entradas**, existe **una única salida definida**.
 
 La lógica combinacional se utiliza ampliamente en:
 
-- Sumadores y ALUs  
-- Decodificadores  
-- Codificadores  
-- Comparadores  
-- Multiplexores  
+- Sumadores y ALUs (Unidades Aritméticas Lógicas)
+- Decodificadores y codificadores
+- Comparadores
+- Multiplexores y demultiplexores
+- Detectores de paridad
 
 ---
 
@@ -91,60 +97,112 @@ module ej1 (
 );
     assign o = a || b;
 endmodule
-
 ```
 
-El software de sintesis logica traduce esta descripcion en un circuito fiscio equivalente.
+El software de síntesis lógica traduce esta descripción en un circuito físico equivalente.
 
-Verilog incluye la mayoria de los operadores del lenguaje c:
+#### Operadores disponibles en Verilog:
 
-* Aritméticos: + - * / %
+| Categoría | Operadores | Ejemplos |
+|-----------|-----------|----------|
+| **Aritméticos** | `+` `-` `*` `/` `%` | `a + b`, `a - b` |
+| **A nivel de bits** | `&` `\|` `^` `~` `<<` `>>` | `a & b`, `a ^ b`, `a << 2` |
+| **Comparación** | `>` `>=` `<` `<=` `==` `!=` | `a > b`, `a == b` |
+| **Lógicos** | `&&` `\|\|` `!` | `a && b`, `!a` |
+| **Condicional** | `? :` | `(sel) ? a : b` |
+| **Indexación** | `[ ]` | `bus[7:0]`, `array[3]` |
 
-* A nivel de bits: & | ^ ~ << >>
+---
 
-* Comparación: > >= !=
+## ⏱️ Lógica Secuencial
 
-* Lógicos: && || !
+La **lógica secuencial** es la otra parte fundamental del diseño digital. A diferencia de la lógica combinacional, en la lógica secuencial:
 
-* Indexación de arreglos: []
+- Las salidas dependen de entradas **actuales y pasadas**
+- Utiliza memoria y estados previos
+- Requiere una señal de reloj (clock) para sincronizar cambios
+- Se utiliza en máquinas de estado, contadores y registros
 
-* Operador condicional: ?: 
+---
 
+### 📋 Registros y Flip-Flops
 
-## REGISTROS 
+Ejemplo de un **flip-flop tipo D**, el elemento básico de almacenamiento:
 
-Ejemplo de un flip-flop tipo D
-
-
-```
+```verilog
 module ex2 (
-input logic d, clk,
-output logic q
+    input  logic d, clk,
+    output logic q
 );
-always_ff @(posedge clk) begin
-q <= d;
-end
+    always_ff @(posedge clk) begin
+        q <= d;
+    end
 endmodule
 ```
 
-Este código sintetiza un flip-flop D que copia la entrada d a la salida q en el flanco positivo del reloj.
+**Explicación:**
+- `always_ff`: Indica un bloque secuencial (sensible al reloj)
+- `@(posedge clk)`: Se ejecuta en el flanco positivo del reloj
+- `q <= d`: Asignación no-bloqueante (propia de bloques secuenciales)
+- Este código sintetiza un flip-flop D que copia la entrada `d` a la salida `q` en cada flanco positivo
 
-## MULTIPLEXORES Y BUSES
+---
 
-La sentencia if modela un multiplexor 
+## 🔀 Multiplexores y Buses
 
-```
+### Multiplexores con sentencia `if`
+
+La sentencia `if` modela un **multiplexor 2:1**:
+
+```verilog
 module ex3 (
-input logic sel,
-input logic [3:0] a, b,
-output logic [3:0] y
+    input  logic sel,
+    input  logic [3:0] a, b,
+    output logic [3:0] y
 );
-always_comb begin
-if (sel) y <= a;
-else y <= b;
-end
+    always_comb begin
+        if (sel) 
+            y = a;
+        else 
+            y = b;
+    end
 endmodule
 ```
-Los arreglos representan buses. Normalmente se definen con el bit más significativo a la izquierda.
+
+**Explicación:**
+- `sel`: Señal de selección
+- `[3:0]`: Rango de bits (4 bits, desde bit 3 al 0)
+- Según el valor de `sel`, selecciona entre `a` o `b`
+
+### Buses de datos
+
+Los arreglos representan **buses** (grupos de bits). Normalmente se definen con el bit más significativo (MSB) a la izquierda y el menos significativo (LSB) a la derecha:
+
+```verilog
+logic [7:0] bus;  // Bus de 8 bits (bit 7 es MSB, bit 0 es LSB)
+logic [15:0] address;  // Bus de dirección de 16 bits
+```
+
+---
+
+## 🛠️ Herramientas Recomendadas
+
+- **Simuladores:** ModelSim, Vivado Simulator, Icarus Verilog
+- **Sintetizadores:** Vivado (Xilinx), Quartus (Intel/Altera), Yosys
+- **Editores:** VS Code con extensiones HDL, Sublime Text
+
+---
+
+## 📖 Recursos Adicionales
+
+- [IEEE Verilog Standard](https://ieeexplore.ieee.org/document/8299595)
+- [OpenCourseWare - VLSI Design](https://ocw.mit.edu/)
+- Documentación oficial de herramientas EDA
+
+---
+
+## 📝 Licencia
+
+Este proyecto es de código abierto bajo licencia MIT.
 
 
